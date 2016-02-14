@@ -1,4 +1,4 @@
-module Tweeter
+module Guac
   class FileStreamer
     def initialize(path)
       @file = File.open(path)

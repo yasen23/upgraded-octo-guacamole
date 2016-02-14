@@ -1,7 +1,7 @@
-module Tweeter
+module Guac
     class FileService
         LOCATON = 'app/public/uploads/'
-        
+
         def self.transfer(temp_file, filename)
             timestamp = Time.now.utc.iso8601
             path = "#{LOCATON}#{timestamp}-#{filename}"

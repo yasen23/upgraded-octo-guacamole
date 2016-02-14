@@ -1,11 +1,11 @@
 module Guac
-  class UserController < BaseController
-    def get_show(req)
+  class PromiseController < BaseController
+    def get_create(req)
       return redirect('/login') unless authorized?(req)
 
       id = req.params['id'] || req.session['user_id']
       @user = UserRepository.find(id)
-      render :show
+      render :create_promise
     end
 
     def get_register(req)

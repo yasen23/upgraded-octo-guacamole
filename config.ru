@@ -6,9 +6,9 @@ require 'time'
 require 'mime-types'
 
 
-require './tweeter/controller/base_controller'
-require './tweeter/controller_registry'
-require './tweeter/router'
+require './guac/controller/base_controller'
+require './guac/controller_registry'
+require './guac/router'
 
 require './app/models/user'
 require './app/repositories/user_repository'
@@ -17,6 +17,7 @@ require './app/services/file_streamer'
 require './app/controllers/user_controller'
 require './app/controllers/login_controller'
 require './app/controllers/upload_controller'
+require './app/controllers/promise_controller'
 
 DB = SQLite3::Database.new './db/database.sqlite3'
 
@@ -25,6 +26,7 @@ ROUTES = {
           get: {
               '/' => 'user#show',
               '/show' => 'user#show',
+              '/createPromise' => 'promise#create',
               '/register' => 'user#register',
               '/login' => 'login#login',
               '/logout' => 'login#logout',
@@ -41,11 +43,12 @@ ROUTES = {
 use Rack::Static, :urls => ["/css", "/images", "/uploads"], :root => "app/public"
 use Rack::Session::Pool
 
-controller_registry = Tweeter::ControllerRegistry.new
-controller_registry.add_controllers('user' => Tweeter::UserController.new(),
-                                   'login' => Tweeter::LoginController.new(),
-                                   'upload' => Tweeter::UploadController.new())
-router = Tweeter::Router.new controller_registry, ROUTES
+controller_registry = Guac::ControllerRegistry.new
+controller_registry.add_controllers('user' => Guac::UserController.new(),
+                                   'login' => Guac::LoginController.new(),
+                                   'upload' => Guac::UploadController.new(),
+                                   'promise' => Guac::PromiseController.new())
+router = Guac::Router.new controller_registry, ROUTES
 
 sessioned = Rack::Session::Pool.new(router,
   #:domain => '0.0.0.0',

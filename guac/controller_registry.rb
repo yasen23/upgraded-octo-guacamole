@@ -1,4 +1,4 @@
-module Tweeter
+module Guac
   class ControllerRegistry
       def initialize()
           @controllers = {}
