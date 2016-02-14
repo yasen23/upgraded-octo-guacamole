@@ -16,3 +16,14 @@ CREATE TABLE promises (
   user_id INTEGER NOT NULL, 
   FOREIGN KEY(user_id) REFERENCES users(id)
 );
+
+CREATE TABLE comments (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  text TEXT NOT NULL,
+  user_id INTEGER NOT NULL,
+  promise_id INTEGER NOT NULL,
+  score INTEGER NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id),
+  FOREIGN KEY(promise_id) REFERENCES promises(id)
+);

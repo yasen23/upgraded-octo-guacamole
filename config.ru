@@ -12,15 +12,18 @@ require './guac/router'
 
 require './app/models/user'
 require './app/models/promise'
+require './app/models/comment'
 
 require './app/repositories/user_repository'
 require './app/repositories/promise_repository'
+require './app/repositories/comment_repository'
 
 require './app/services/file_service'
 require './app/services/file_streamer'
 
 require './app/controllers/user_controller'
 require './app/controllers/login_controller'
+require './app/controllers/comment_controller'
 require './app/controllers/upload_controller'
 require './app/controllers/promise_controller'
 
@@ -38,24 +41,27 @@ ROUTES = {
               '/download' => 'upload#download',
               '/createPromise' => 'promise#create',
               '/listPromises' => 'promise#list',
-              '/showPromise' => 'promise#single'
+              '/showPromise' => 'promise#single',
+              '/comments' => 'comment#comments'
           },
           post: {
             '/register' => 'user#register',
             '/login' => 'login#login',
             '/upload' => 'upload#upload',
             '/createPromise' => 'promise#create',
+            '/comment' => 'comment#comment'
           },
       }
 
-use Rack::Static, :urls => ["/css", "/images", "/uploads"], :root => "app/public"
+use Rack::Static, :urls => ["/css", "/images", "/uploads", "/js"], :root => "app/public"
 use Rack::Session::Pool
 
 controller_registry = Guac::ControllerRegistry.new
 controller_registry.add_controllers('user' => Guac::UserController.new(),
                                    'login' => Guac::LoginController.new(),
                                    'upload' => Guac::UploadController.new(),
-                                   'promise' => Guac::PromiseController.new())
+                                   'promise' => Guac::PromiseController.new(),
+                                   'comment' => Guac::CommentController.new())
 router = Guac::Router.new controller_registry, ROUTES
 
 sessioned = Rack::Session::Pool.new(router,

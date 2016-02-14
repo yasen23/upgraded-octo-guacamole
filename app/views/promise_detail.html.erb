@@ -2,13 +2,15 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="js/comments.js"></script>
     <title><%= @user.full_name %> | <%= @promise.title %></title>
   </head>
   <body>
     <%= partial "navigation" %>
-    <h1><%= @promise.title %> | 
+    <h1><%= @promise.title %>  
       <% if @promise.status != Promise::NOT_STARTED %>
-        <a href="<%= @promise.completed_reference %>">Article</a>
+        | <a href="<%= @promise.completed_reference %>">Article</a>
       <% end %>
     </h1>
     By <%= @user.full_name %>
@@ -18,10 +20,14 @@
     <div class="textarea">
       <%= @promise.body %>
     </div>
+    <div id="promise-id" hidden><%= @promise.id %></div>
 
     <br/>
     Comments:
     <div class="comments-container">
     </div>
+    Add a comment:
+    <input id="comment-text" type="text"/>
+    <button class="add-comment">Comment!</button>
   </body>
 </html>
