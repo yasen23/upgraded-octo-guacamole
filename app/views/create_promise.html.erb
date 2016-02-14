@@ -5,11 +5,7 @@
     <title><%= @user.full_name %> | Promises</title>
   </head>
   <body>
-    <nav class="main-nav">
-      <a href="/show" id="asd">Home</a>
-      <a href="/createPromise">Create promise</a>
-      <a href="/logout">Logout</a>
-    </nav>
+    <%= partial 'navigation' %>
     <form method="post" action="/createPromise">
       <fieldset>
         <legend>Create promise</legend>

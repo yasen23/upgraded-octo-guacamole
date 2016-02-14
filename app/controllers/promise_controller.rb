@@ -24,8 +24,18 @@ module Guac
 			id = req.params['id'] || req.session['user_id']
 			@user = UserRepository.find(id)
 			@promises = PromiseRepository.find_by_user(id)
-      print @promises
       render :list_promises
 		end
+
+    def get_single(req)
+      return redirect('/login') unless authorized?(req)
+
+      id = req.params['id'] || req.session['user_id']
+			@user = UserRepository.find(id)
+
+      promise_id = req.params['promiseId']
+      @promise = PromiseRepository.find(promise_id)
+      render :promise_detail
+    end
   end
 end

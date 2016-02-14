@@ -37,7 +37,8 @@ ROUTES = {
               '/upload' => 'upload#upload',
               '/download' => 'upload#download',
               '/createPromise' => 'promise#create',
-              '/listPromises' => 'promise#list'
+              '/listPromises' => 'promise#list',
+              '/showPromise' => 'promise#single'
           },
           post: {
             '/register' => 'user#register',

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/style.css" rel="stylesheet">
+    <title><%= @user.full_name %> | <%= @promise.title %></title>
+  </head>
+  <body>
+    <%= partial "navigation" %>
+    <h1><%= @promise.title %> | 
+      <% if @promise.status != Promise::NOT_STARTED %>
+        <a href="<%= @promise.completed_reference %>">Article</a>
+      <% end %>
+    </h1>
+    By <%= @user.full_name %>
+    <div>
+      <%= @promise.status %>
+    </div>
+    <div class="textarea">
+      <%= @promise.body %>
+    </div>
+
+    <br/>
+    Comments:
+    <div class="comments-container">
+    </div>
+  </body>
+</html>
