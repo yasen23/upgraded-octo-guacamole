@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Upload | Tweeter</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    </nav>
+      <form method="post" action="/upload" enctype="multipart/form-data">
+          file: <input type="file" name="upload_file"><br/>
+          description: <input type="text" name="desc"><br/>
+          <button name="upload">Upload</button>
+      </form>
+      <a href="/download?file=2016-01-21T08:45:31Z-79ECCA58-5763-43F7-97C7-9672E96C752C[105].png" download="some-file">download</a>
+  </body>
+</html>
