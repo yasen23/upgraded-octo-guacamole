@@ -2,7 +2,12 @@ module Guac
     class BaseController
         def render(view_path)
             view_content = File.read("./app/views/#{view_path}.html.erb")
-            Rack::Response.new  ERB.new(view_content).result(binding)
+            Rack::Response.new ERB.new(view_content).result(binding)
+        end
+
+        def partial(view_path)
+            view_content = File.read("./app/views/partials/_#{view_path}.erb")
+            ERB.new(view_content).result(binding)
         end
 
         def redirect(path)
