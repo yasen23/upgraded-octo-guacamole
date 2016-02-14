@@ -25,8 +25,6 @@ ROUTES = {
           get: {
               '/' => 'user#show',
               '/show' => 'user#show',
-              '/following' => 'user#following',
-              '/followers' => 'user#followers',
               '/register' => 'user#register',
               '/login' => 'login#login',
               '/logout' => 'login#logout',

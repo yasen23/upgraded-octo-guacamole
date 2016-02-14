@@ -43,50 +43,6 @@ module UserRepository
   def delete(id)
     DB.execute "DELETE FROM users WHERE id = #{id};"
   end
-
-  def followers(id)
-    columns, *rows = DB.execute2 <<-SQL
-      SELECT users.id AS id, email, username, first_name, last_name, location FROM users
-      JOIN users_followers
-      ON users.id = users_followers.follower_id
-      WHERE users_followers.followed_id = #{id};
-    SQL
-
-    return unless rows
-
-    rows.map do |row|
-      user_attributes = columns.zip(row).to_h
-
-      wrap_user(user_attributes)
-    end
-  end
-
-  def following(id)
-    columns, *rows = DB.execute2 <<-SQL
-      SELECT users.id AS id, email, username, first_name, last_name, location FROM users
-      JOIN users_followers
-      ON users.id = users_followers.followed_id
-      WHERE users_followers.follower_id = #{id};
-    SQL
-
-    return unless rows
-
-    rows.map do |row|
-      user_attributes = columns.zip(row).to_h
-
-      wrap_user(user_attributes)
-    end
-  end
-  
-  def follow(follower_id, followed_id)
-    DB.execute <<-SQL
-    INSERT INTO users_followers (
-        `follower_id`, `followed_id`
-      ) VALUES (
-        '#{follower_id}', '#{followed_id}'
-      );
-    SQL
-  end
   
   def wrap_user(user_attributes)
     User.new(
