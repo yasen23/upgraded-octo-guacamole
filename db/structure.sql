@@ -7,10 +7,12 @@ CREATE TABLE users (
   location TEXT
 );
 
-CREATE TABLE users_followers (
+CREATE TABLE promises (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  followed_id INTEGER NOT NULL,
-  follower_id INTEGER NOT NULL,
-  FOREIGN KEY(followed_id) REFERENCES users(id),
-  FOREIGN KEY(follower_id) REFERENCES users(id)
+  status INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  body TEXT,
+  completed_reference TEXT,
+  user_id INTEGER NOT NULL, 
+  FOREIGN KEY(user_id) REFERENCES users(id)
 );
