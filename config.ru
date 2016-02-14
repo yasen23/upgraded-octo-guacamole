@@ -11,9 +11,14 @@ require './guac/controller_registry'
 require './guac/router'
 
 require './app/models/user'
+require './app/models/promise'
+
 require './app/repositories/user_repository'
+require './app/repositories/promise_repository'
+
 require './app/services/file_service'
 require './app/services/file_streamer'
+
 require './app/controllers/user_controller'
 require './app/controllers/login_controller'
 require './app/controllers/upload_controller'
@@ -26,17 +31,18 @@ ROUTES = {
           get: {
               '/' => 'user#show',
               '/show' => 'user#show',
-              '/createPromise' => 'promise#create',
               '/register' => 'user#register',
               '/login' => 'login#login',
               '/logout' => 'login#logout',
               '/upload' => 'upload#upload',
               '/download' => 'upload#download',
+              '/createPromise' => 'promise#create',
           },
           post: {
             '/register' => 'user#register',
             '/login' => 'login#login',
             '/upload' => 'upload#upload',
+            '/createPromise' => 'promise#create',
           },
       }
 

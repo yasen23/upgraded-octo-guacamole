@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <link href="css/reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title><%= @user.full_name %> | Promises</title>
   </head>
   <body>
     <nav class="main-nav">
       <a href="/show?id=<%= @user.id %>" id="asd">Home</a>
-      <a href="/createPromise?id=<%= @user.id %>">Create promise</a>
+      <a href="/createPromise">Create promise</a>
       <a href="/logout">Logout</a>
     </nav>
-    <h1>Profile</h1>
-    <section>
-      <img src="http://www.projectiv.co/wp-content/uploads/2013/12/placeholder.png" alt="Profile picture" id="profile-pic"/>
-      <p><%= @user.full_name %></p>
-      <p>@<%= @user.username %></p>
-      <p>location: <%= @user.location %></p>
-    </section>
+    <form method="post" action="/createPromise">
+      <fieldset>
+        <legend>Create promise</legend>
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title" placeholder="Promise title" />
+        <label for="body">Body: </label>
+        <textarea name="body" id="body" placeholder="Promise"></textarea>
+        <input type="submit"/>
+      </fieldset>
+    </form>
   </body>
 </html>

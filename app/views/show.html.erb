@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <link href="css/reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title><%= @user.full_name %> | Promises</title>
   </head>
   <body>
     <nav class="main-nav">
       <a href="/show?id=<%= @user.id %>" id="asd">Home</a>
-      <a href="/createPromise?id=<%= @user.id %>">Create promise</a>
+      <a href="/createPromise">Create promise</a>
       <a href="/logout">Logout</a>
     </nav>
     <h1>Profile</h1>

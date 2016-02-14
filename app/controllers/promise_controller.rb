@@ -8,14 +8,14 @@ module Guac
       render :create_promise
     end
 
-    def get_register(req)
-      render :register
-    end
+    def post_create(req)
+      return redirect('/login') unless authorized?(req)
 
-    def post_register(req)
-      user = User.new(req.params['username'], req.params['email'], req.params['first_name'], req.params['last_name'], nil)
-      UserRepository.create(user)
-      redirect '/'
+      id = req.session['user_id']
+      promise = Promise.new(Promise::NOT_STARTED, req.params['title'], req.params['body'], nil, id)
+      PromiseRepository.create(promise)
+
+      return redirect('/')
     end
   end
 end
