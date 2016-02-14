@@ -1,0 +1,6 @@
+{{#comments}}
+  <div class="comment">
+  <a href='/show?id={{user_id}}'>{{username}}</a> on {{timestamp}}:</br>
+  {{text}}
+  </div>
+{{/comments}}

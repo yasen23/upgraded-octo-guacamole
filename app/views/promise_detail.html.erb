@@ -3,7 +3,9 @@
   <head>
     <link href="css/style.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="js/mustache.js"></script>
     <script type="text/javascript" src="js/comments.js"></script>
+
     <title><%= @user.full_name %> | <%= @promise.title %></title>
   </head>
   <body>
@@ -24,8 +26,9 @@
 
     <br/>
     Comments:
-    <div class="comments-container">
+    <div id="comments-container">
     </div>
+    <br/>
     Add a comment:
     <input id="comment-text" type="text"/>
     <button class="add-comment">Comment!</button>
