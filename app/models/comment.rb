@@ -1,4 +1,7 @@
+require 'jsonable'
+
 class Comment
+  include Jsonable
   attr_accessor :id, :timestamp, :text, :user_id, :promise_id, :score, :username
 
   def initialize(id = nil, timestamp = nil, username = nil, text, user_id, promise_id, score)

@@ -1,3 +1,5 @@
+require 'json'
+
 module Guac
   class CommentController < BaseController
     def post_comment(req)
@@ -18,7 +20,7 @@ module Guac
 			promise_id = req.params['promise_id']
       comments = CommentRepository.get_by_promise_id(promise_id)
 
-      Rack::response.new(status = 200, body = comments.to_json)
+      Rack::Response.new(body = comments.to_json, status = 200)
 		end
   end
 end

@@ -12,27 +12,25 @@ module CommentRepository
   end
 
   def get_by_promise_id(promise_id)
-    result = DB.execute <<-SQL
-      SELECT *
-      FROM comments
-      WHERE promise_id = '#{promise_id}'
+    columns = DB.execute <<-SQL
+      SELECT l.id, timestamp, k.username, text, user_id, promise_id, score
+      FROM comments l
       JOIN (
-        SELECT username, id
+        SELECT id, username
         FROM users) k
       ON k.id == user_id;
+      WHERE promise_id = '#{promise_id}'
     SQL
-    print result
-    column_names = result.first
-    columns = result[1..-1]
 
-    comments = columns.collect { |x| wrap_comment(column_names.zip(x).to_h) }
+    column_names = ['id', 'timestamp', 'username', 'text', 'user_id', 'promise_id', 'score']
+    columns.collect { |x| wrap_comment(column_names.zip(x).to_h) }
   end
 
   def delete(id)
     DB.execute "DELETE FROM comments WHERE id = #{id};"
   end
 
-  def wrap_promise(comment)
+  def wrap_comment(comment)
     Comment.new(
         comment['id'],
         comment['timestamp'],

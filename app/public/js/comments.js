@@ -11,17 +11,28 @@ var comments = {
         comment_text: text,
         promise_id: promiseId
       }
-    }).then(function(res) {
-    }, function(res) {
+    }).then(function(respose) {}, function(error) {
+      console.log(error);
     });
   },
 
   loadAll: function() {
+    var renderComments = function(data) {
+    };
+
+    $.ajax({
+      url: '/comments?promise_id=' + promiseId,
+      method: 'GET',
+    }).then(function(data) {
+      renderComments(data);
+    }, function(error) {
+      console.log(error);
+    });
   }
 };
 
 $(document).ready(function() {
-  var promiseId = $('#promise-id').val();
+  promiseId = $('#promise-id').text();
   $('.add-comment').on('click', comments.create);
   comments.loadAll();
 });

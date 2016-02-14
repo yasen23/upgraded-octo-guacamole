@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ffi (1.9.10)
+    jsonable (0.0.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -20,6 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  jsonable
   mime-types (~> 3.0)
   rack
   rerun
