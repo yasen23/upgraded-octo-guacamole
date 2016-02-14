@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/style.css" rel="stylesheet">
+    <title><%= @user.full_name %> | Promises</title>
+  </head>
+  <body>
+    <nav class="main-nav">
+      <a href="/show" id="asd">Home</a>
+      <a href="/createPromise">Create promise</a>
+      <a href="/logout">Logout</a>
+    </nav>
+    <table>
+      <thead>
+        <th>Status</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Completed ref.</th>
+      </thead>
+      <% for @promise in @promises %>
+        <tr>
+          <td><%= @promise.status %></td>
+          <td><a href="/showPromise?id=<%= @promise.id %>"><%= @promise.title %></a></td>
+          <td><%= @promise.body %></td>
+          <td><a href="<%= @promise.completed_reference %>">Article</a></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>
