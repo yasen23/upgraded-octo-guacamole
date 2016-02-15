@@ -1,57 +1,47 @@
 var promiseId = -1;
 
-var comments = {
-  create: function() {
+var comments = function() {
+  var create = function() {
     var text = $('#comment-text').val();
     $('#comment-text').val('');
+    ajax.postComment(text, promiseId, loadAll);
+  };
 
-    $.ajax({
-      url: '/comment',
-      method: 'POST',
-      data: JSON.stringify({
-        comment_text: text,
-        promise_id: promiseId
-      })
-    }).then(function(respose) {}, function(error) {
-      console.log(error);
-    });
-  },
-
-  loadAll: function() {
-    var renderComments = function(data) {
-      $.ajax({
-        url: 'js/templates/comment.mst',
-        method: 'GET'
-      }).then(function(mst) {
-        var rendered = Mustache.render(mst, {comments: data});
-        $("#comments-container").html(rendered);
-      }, function(error) {
-        console.log(error);
-      });
-    };
-
-    $.ajax({
-      url: '/comments?promise_id=' + promiseId,
-      method: 'GET',
-    }).then(function(resp) {
-      var data = JSON.parse(resp);
-      comments = [];
-      for (var i = 0; i < data.length; ++i) {
-        comment = {};
-        for (var key in data[i]) {
-          var newKey = key.substring(1);
-          comment[newKey] = data[i][key];
-        }
-
-        comments.push(comment);
+  var parseComments = function(rawComments) {
+    var data = JSON.parse(rawComments);
+    comments = [];
+    for (var i = 0; i < data.length; ++i) {
+      comment = {};
+      for (var key in data[i]) {
+        var newKey = key.substring(1);
+        comment[newKey] = data[i][key];
       }
 
-      renderComments(comments);
-    }, function(error) {
-      console.log(error);
-    });
+      comments.push(comment);
+    }
+
+    return comments;
   }
-};
+
+  var renderComments = function(data) {
+    ajax.getTemplate('comment.mst', function(template) {
+      var rendered = Mustache.render(template, {comments: data});
+      $("#comments-container").html(rendered);
+    });
+  };
+
+  var loadAll = function() {
+    ajax.getComments(promiseId, function(resp) {
+      var parsed = parseComments(resp);
+      renderComments(parsed);
+    });
+  };
+
+  return {
+    loadAll: loadAll,
+    create: create
+  };
+}();
 
 $(document).ready(function() {
   promiseId = $('#promise-id').text();
