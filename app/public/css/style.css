@@ -67,6 +67,8 @@ textarea.input{
 .promise-content img {
   margin: 0 auto;
   display: block;
+  height: 25px;
+  width: 25px;
 }
 
 .promise-status div {
