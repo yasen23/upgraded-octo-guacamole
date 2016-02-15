@@ -7,6 +7,7 @@
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/promise-status.js"></script>
     <script type="text/javascript" src="js/promise-actions.js"></script>
+    <script type="text/javascript" src="js/list-promises.js"></script>
 
     <title><%= @user.full_name %> | Promises</title>
   </head>
@@ -15,19 +16,38 @@
     <div class="content" style="overflow-x:auto;">
       <table id="promises-table">
         <thead>
-          <th>Status</th>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Completed ref.</th>
+          <th class='header'>Status</th>
+          <th class='header'>Title</th>
+          <th class='header'>Body</th>
+          <th class='header'>Reference</th>
           <th>Actions</th>
         </thead>
         <% for @promise in @promises %>
           <tr>
-            <td><div class="promise-status"><%= @promise.status %></div></td>
-            <td><a href="/showPromise?promiseId=<%= @promise.id %>"><%= @promise.title %></a></td>
-            <td><%= @promise.body %></td>
-            <td><a href="<%= @promise.completed_reference %>">Article</a></td>
-            <td><div class="actions promise-<%= @promise.id %>" data-id="<%= @promise.id %>"><%= @promise.id %></div></td>
+            <td>
+              <div class="promise-status">
+                <span class='status-sort-item'><%= @promise.status %></span>
+              </div>
+            </td>
+            <td>
+              <a href="/showPromise?promiseId=<%= @promise.id %>">
+                <span class='title-sort-item'><%= @promise.title %></span>
+              </a>
+            </td>
+            <td>
+              <span class='body-sort-item'><%= @promise.body %></span>
+            </td>
+            <td>
+              <a href="<%= @promise.completed_reference %>">
+                <span class='reference-sort-item'>Article</span>
+              </a>
+            </td>
+            <td>
+              <div class="actions promise-<%= @promise.id %>"
+                  data-id="<%= @promise.id %>">
+                <%= @promise.id %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </table>
