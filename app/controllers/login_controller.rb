@@ -19,7 +19,7 @@ module Guac
     end
 
     def get_logout(req)
-      autorize(req)
+      authorize(req)
       return redirect '/login' unless @authorized
 
       req.session.clear
