@@ -8,7 +8,6 @@ $(document).ready(function() {
 
   var updatePromise = function(event) {
     var id = $(event.target.parentNode).data('id');
-
   };
 
   var addActions = function(data) {
@@ -32,7 +31,8 @@ $(document).ready(function() {
   };
 
   $('.actions').each(function(i, obj) {
-    var promiseId = parseInt($(obj).text().trim());
+    var promiseId = $(obj).data('id');
+		console.log(promiseId);
     ajax.getRights(promiseId, addActions);
   });
 });
