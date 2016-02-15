@@ -1,6 +1,10 @@
 {{#comments}}
   <div class="comment">
-  <a href='/show?id={{user_id}}'>{{username}}</a> on {{timestamp}}:</br>
-  {{text}}
+    <div class="comment-head">
+      <a href='/show?id={{user_id}}'>{{username}}</a> on {{timestamp}}:
+    </div>
+    <div class="comment-body">
+    {{text}}
+    </div>
   </div>
 {{/comments}}
