@@ -11,27 +11,29 @@
   </head>
   <body>
     <%= partial "navigation" %>
-    <h1><%= @promise.title %>  
-      <% if @promise.status != Promise::NOT_STARTED %>
-        | <a href="<%= @promise.completed_reference %>">Article</a>
-      <% end %>
-    </h1>
-    By <%= @user.full_name %>
-    <div>
-      <%= @promise.status %>
+    <div class="content">
+      <h1><%= @promise.title %>  
+        <% if @promise.status != Promise::NOT_STARTED %>
+          | <a href="<%= @promise.completed_reference %>">Article</a>
+        <% end %>
+      </h1>
+      By <a href="show?id=<%= @user.id %>"><%= @user.full_name %></a>
+      <div>
+        <%= @promise.status %>
+      </div>
+      <div class="textarea">
+        <%= @promise.body %>
+      </div>
+      <div id="promise-id" hidden><%= @promise.id %></div>
+  
+      <br/>
+      Comments:
+      <div id="comments-container">
+      </div>
+      <br/>
+      Add a comment:
+      <textarea class="input" id="comment-text"></textarea>
+      <button class="input" id="add-comment">Comment!</button>
     </div>
-    <div class="textarea">
-      <%= @promise.body %>
-    </div>
-    <div id="promise-id" hidden><%= @promise.id %></div>
-
-    <br/>
-    Comments:
-    <div id="comments-container">
-    </div>
-    <br/>
-    Add a comment:
-    <input id="comment-text" type="text"/>
-    <button class="add-comment">Comment!</button>
   </body>
 </html>

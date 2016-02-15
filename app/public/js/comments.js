@@ -45,6 +45,6 @@ var comments = function() {
 
 $(document).ready(function() {
   promiseId = $('#promise-id').text();
-  $('.add-comment').on('click', comments.create);
+  $('#add-comment').on('click', comments.create);
   comments.loadAll();
 });

@@ -3,22 +3,23 @@ require 'json'
 module Guac
   class CommentController < BaseController
     def post_comment(req)
-      return Rack::Response.new(status = 401) unless authorized?(req)
+      authorize(req)
+      return Rack::Response.new(status = 401) unless @authorized
 
-      user_id = req.session['user_id']
       params = JSON.parse(req.body.read)
       promise_id = params['promise_id']
       text = params['comment_text']
-      return Rack::Response.new(body = "Empty comment.", status = 400) unless text != nil
+      return Rack::Response.new(body = "Empty comment.", status = 400) unless text != nil and text != ''
 
-      comment = Comment.new(text, user_id, promise_id, 0)
+      comment = Comment.new(text, @current_user.id, promise_id, 0)
       CommentRepository.create(comment)
 
       Rack::Response.new(body = [], status = 201)
     end
 
 		def get_comments(req)
-      return Rack::Response.new(status = 401) unless authorized?(req)
+      authorize(req)
+      return Rack::Response.new(status = 401) unless @authorized
 
 			promise_id = req.params['promise_id']
       comments = CommentRepository.get_by_promise_id(promise_id)
