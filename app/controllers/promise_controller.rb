@@ -11,7 +11,17 @@ module Guac
       authorize(req)
       return redirect('/login') unless @authorized
 
-      promise = Promise.new(Promise::NOT_STARTED, req.params['title'], req.params['body'], nil, @current_user.id)
+      privacy = req.params['privacy']
+      if privacy != Promise::PUBLIC and privacy != Promise::PRIVATE
+        return Rack::Response.new(status = "Invalid privacy setting.", code = 400)
+      end
+
+      promise = Promise.new(Promise::NOT_STARTED,
+        req.params['title'],
+        req.params['body'],
+        nil,
+        @current_user.id,
+        privacy);
       PromiseRepository.create(promise)
 
       return redirect('/listPromises')

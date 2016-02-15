@@ -12,8 +12,6 @@ module UserRepository
   end
 
   def find(id)
-    print "USERID"
-    print id
     columns, row = DB.execute2 "SELECT * FROM users WHERE id = #{id};"
     return unless row
 

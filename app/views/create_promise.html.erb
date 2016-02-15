@@ -11,6 +11,11 @@
       <form method="post" action="/createPromise">
         <label for="title">Title: </label>
         <input class="input" type="text" name="title" id="title" placeholder="Promise title" />
+        <label for="pr">Privacy:</label>
+        <select class="input" id="pr" name="privacy">
+          <option value="0">Public (anyone can update status)</option>
+          <option value="1">Private (only you can update status)</option>
+        </select>
         <label for="body">Body: </label>
         <textarea class="input" name="body" id="body" placeholder="Promise"></textarea>
         <input type="submit"/>

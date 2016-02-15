@@ -12,6 +12,7 @@ CREATE TABLE promises (
   status INTEGER NOT NULL,
   title TEXT NOT NULL,
   body TEXT,
+  privacy INTEGER NOT NULL,
   completed_reference TEXT,
   user_id INTEGER NOT NULL, 
   FOREIGN KEY(user_id) REFERENCES users(id)
