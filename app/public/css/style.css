@@ -119,3 +119,7 @@ textarea.input{
 #promises-table th:nth-child(2) { width: 20%; }
 #promises-table th:nth-child(3) { width: 45%; }
 #promises-table th:nth-child(4) { width: 30%; }
+
+a.action {
+  display: inline-block;
+}

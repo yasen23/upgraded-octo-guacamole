@@ -6,12 +6,13 @@
     <script type="text/javascript" src="js/mustache.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/promise-status.js"></script>
+    <script type="text/javascript" src="js/promise-actions.js"></script>
 
     <title><%= @user.full_name %> | Promises</title>
   </head>
   <body>
     <%= partial "navigation" %>
-    <div style="overflow-x:auto;">
+    <div class="content" style="overflow-x:auto;">
       <table id="promises-table">
         <thead>
           <th>Status</th>
@@ -26,8 +27,7 @@
             <td><a href="/showPromise?promiseId=<%= @promise.id %>"><%= @promise.title %></a></td>
             <td><%= @promise.body %></td>
             <td><a href="<%= @promise.completed_reference %>">Article</a></td>
-            <td><div class="actions"></div></td>
-            <td hidden><%= @promise.id %></td>
+            <td><div class="actions promise-<%= @promise.id %>" data-id="<%= @promise.id %>"><%= @promise.id %></div></td>
           </tr>
         <% end %>
       </table>

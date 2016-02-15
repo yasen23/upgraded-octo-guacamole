@@ -13,6 +13,7 @@ require './guac/router'
 require './app/models/user'
 require './app/models/promise'
 require './app/models/comment'
+require './app/models/edit_rights'
 
 require './app/repositories/user_repository'
 require './app/repositories/promise_repository'
@@ -42,14 +43,17 @@ ROUTES = {
               '/createPromise' => 'promise#create',
               '/listPromises' => 'promise#list',
               '/showPromise' => 'promise#single',
-              '/comments' => 'comment#comments'
+              '/comments' => 'comment#comments',
+              '/promiseRights' => 'promise#promise_rights'
           },
           post: {
             '/register' => 'user#register',
             '/login' => 'login#login',
             '/upload' => 'upload#upload',
             '/createPromise' => 'promise#create',
-            '/comment' => 'comment#comment'
+            '/comment' => 'comment#comment',
+            '/updatePromise' => 'promise#update',
+            '/editPromise' => 'promise#edit'
           },
       }
 

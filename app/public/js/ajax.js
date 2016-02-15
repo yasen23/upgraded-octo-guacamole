@@ -28,9 +28,17 @@ var ajax = function() {
       }).then(callback, logError);
   };
 
+  var getRights = function(promiseId, callback) {
+    $.ajax({
+        url: '/promiseRights?promiseId=' + promiseId,
+        method: 'GET'
+      }).then(callback, logError);
+  };
+
   return {
     postComment: postComment,
     getComments: getComments,
-    getTemplate: getTemplate
+    getTemplate: getTemplate,
+    getRights: getRights
   };
 }();

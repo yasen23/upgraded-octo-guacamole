@@ -34,6 +34,7 @@ module PromiseRepository
         status = '#{promise.status}',
         title = '#{promise.title}',
         body = '#{promise.body}',
+        privacy = '#{promise.privacy}'
         completed_reference = '#{promise.completed_reference}',
       WHERE id = #{promise.id};
     SQL
