@@ -18,6 +18,7 @@
           <th>Title</th>
           <th>Body</th>
           <th>Completed ref.</th>
+          <th>Actions</th>
         </thead>
         <% for @promise in @promises %>
           <tr>
@@ -25,6 +26,8 @@
             <td><a href="/showPromise?promiseId=<%= @promise.id %>"><%= @promise.title %></a></td>
             <td><%= @promise.body %></td>
             <td><a href="<%= @promise.completed_reference %>">Article</a></td>
+            <td><div class="actions"></div></td>
+            <td hidden><%= @promise.id %></td>
           </tr>
         <% end %>
       </table>
