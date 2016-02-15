@@ -50,8 +50,8 @@ module PromiseRepository
         promise['body'],
         promise['completed_reference'],
         promise['user_id'],
-        promise['id'],
-        promise['privacy']
+        promise['privacy'],
+        promise['id']
       )
   end
 end
