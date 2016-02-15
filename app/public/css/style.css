@@ -22,7 +22,6 @@ nav.main-nav div:hover {
 }
 
 div.content {
-  margin-left: 15px;
   height: auto;
   width: auto;
 }
@@ -117,8 +116,9 @@ textarea.input{
 
 #promises-table th:nth-child(1) { width: 5%; }
 #promises-table th:nth-child(2) { width: 20%; }
-#promises-table th:nth-child(3) { width: 45%; }
-#promises-table th:nth-child(4) { width: 30%; }
+#promises-table th:nth-child(3) { width: 35%; }
+#promises-table th:nth-child(4) { width: 25%; }
+#promises-table th:nth-child(5) { width: 15%; }
 
 #promises-table .header:hover {
   -o-transition:.5s;
