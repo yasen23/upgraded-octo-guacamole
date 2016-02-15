@@ -1,0 +1,39 @@
+nav.main-nav {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav.main-nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav.main-nav div {
+  float: left;
+}
+
+nav.main-nav div:hover {
+  background: green;
+}
+
+div.content {
+  margin-left: 15px;
+  height: auto;
+  width: auto;
+}
+
+.input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:block; 
+}
+
+textarea.input{
+  width: 300px;
+  height: 100px;
+}
