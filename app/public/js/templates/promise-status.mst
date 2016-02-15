@@ -1,0 +1,4 @@
+<div class="promise-content">
+  <img src="{{icon}}" alt="{{status}}"/>
+  <div class="{{statusClass}}">{{status}}</div>
+</div>

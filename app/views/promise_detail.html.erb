@@ -6,6 +6,7 @@
     <script type="text/javascript" src="js/mustache.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/comments.js"></script>
+    <script type="text/javascript" src="js/promise-status.js"></script>
 
     <title><%= @user.full_name %> | <%= @promise.title %></title>
   </head>
@@ -18,7 +19,7 @@
         <% end %>
       </h1>
       By <a href="show?id=<%= @user.id %>"><%= @user.full_name %></a>
-      <div>
+      <div class="promise-status">
         <%= @promise.status %>
       </div>
       <div class="textarea">

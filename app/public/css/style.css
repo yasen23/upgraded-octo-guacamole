@@ -57,3 +57,34 @@ textarea.input{
   margin-bottom: 3px;
   border-radius: 7px;
 }
+
+.promise-content {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.promise-content img {
+  margin: 0 auto;
+  display: block;
+}
+
+.promise-status div {
+  font-size: 75%;
+}
+
+.promise-status div.not-started {
+  color: grey;
+}
+
+.promise-status div.in-progress {
+  color: yellow;
+}
+
+.promise-status div.broken {
+  color: red;
+}
+
+.promise-status div.completed {
+  color: green;
+}
