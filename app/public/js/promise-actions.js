@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  var UPDATE = '<a href="#" class="update action">Update</a>';
-  var EDIT = '<a href="#" class="edit action">Edit</a>';
+  var UPDATE = '<a href="#" class="update action"><img id="update-icon" src="images/update-icon.png" /></a>';
+  var EDIT = '<a href="#" class="edit action"><img id="edit-icon" src="images/edit-icon-new.png" /></a>';
 
   var editPromise = function(event) {
     var id = $(event.target.parentNode).data('id');
@@ -15,7 +15,7 @@ $(document).ready(function() {
     rights = JSON.parse(data);
     var html = '';
     if (rights['@edit'] == true) {
-      html += EDIT;
+      html += EDIT + ' &nbsp;';
     }
 
     if (rights['@update'] == true) {
