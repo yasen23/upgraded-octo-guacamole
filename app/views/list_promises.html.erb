@@ -2,6 +2,11 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="js/mustache.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/promise-status.js"></script>
+
     <title><%= @user.full_name %> | Promises</title>
   </head>
   <body>
@@ -16,7 +21,7 @@
         </thead>
         <% for @promise in @promises %>
           <tr>
-            <td><%= @promise.status %></td>
+            <td><div class="promise-status"><%= @promise.status %></div></td>
             <td><a href="/showPromise?promiseId=<%= @promise.id %>"><%= @promise.title %></a></td>
             <td><%= @promise.body %></td>
             <td><a href="<%= @promise.completed_reference %>">Article</a></td>
