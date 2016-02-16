@@ -27,6 +27,16 @@ module PromiseRepository
     promises = columns.collect { |x| wrap_promise(column_names.zip(x).to_h) }
   end
 
+  def get_stats_for_user(user_id)
+    result = DB.execute2 <<-SQL
+      SELECT status, COUNT(*)
+      FROM promises
+      WHERE user_id='#{user_id}'
+      GROUP BY status;
+    SQL
+    Hash[result.drop 1]
+  end
+
   def update(promise)
     DB.execute <<-SQL
       UPDATE promise

@@ -6,6 +6,7 @@ module Guac
 
       id = req.params['id'] || req.session['user_id']
       @user = UserRepository.find(id)
+      @stats = PromiseRepository.get_stats_for_user(id)
       render :show
     end
 

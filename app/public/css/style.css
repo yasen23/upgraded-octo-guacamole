@@ -133,3 +133,9 @@ textarea.input{
 a.action {
   display: inline-block;
 }
+
+.user-stats img {
+  margin: 0 auto;
+  height: 32px;
+  width: 32px;
+}

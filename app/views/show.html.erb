@@ -13,6 +13,14 @@
         <p><%= @user.full_name %></p>
         <p>@<%= @user.username %></p>
         <p>location: <%= @user.location %></p>
+
+        <div class="user-stats">
+          Stats:
+          <img src="images/completed.png" /> <%= @stats[3] || 0 %> <br />
+          <img src="images/broken.png" /> <%= @stats[2] || 0%> <br />
+          <img src="images/in_progress.png" /> <%= @stats[1] || 0 %> <br />
+          <img src="images/not_started.png" /> <%= @stats[0] || 0%> <br />
+        </div>
       </section>
     </div>
   </body>
