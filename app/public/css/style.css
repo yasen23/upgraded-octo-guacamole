@@ -10,18 +10,18 @@ nav.main-nav {
 }
 
 nav.main-nav a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
+  color: white;
 }
 
 nav.main-nav div {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
   float: left;
 }
 
-nav.main-nav div:hover {
+nav.main-nav div.hover:hover {
   background: green;
 }
 

@@ -17,6 +17,16 @@ module Guac
       render :register
     end
 
+    def get_all(req)
+      authorize(req)
+      if !@authorized
+        return Rack::Response.new(status = "Not authorized.", code = 401)
+      end
+
+      users = UserRepository.all()
+      return Rack::Response.new(body = users.to_json, code = 200)
+    end
+
     def post_register(req)
       authorize(req)
       return redirect '/' unless !@authorized

@@ -1,16 +1,19 @@
 <nav class="main-nav">
-  <div>
+  <div class="hover">
     <a href="/show">Home</a>
   </div>
-  <div>
+  <div class="hover">
     <a href="/createPromise">Create promise</a>
   </div>
-  <div>
+  <div class="hover">
     <a href="/listPromises">Promises</a>
   </div>
-  <div>
+  <div class="hover">
     <a href="/logout">Logout</a>
   </div>
-
-  Authorized? <%= @authorized %>
+  <div>
+    <input id="user-search" list="users" type="text" placeholder="Find user"/>
+    <datalist id="users">
+    </datalist>
+  </div>
 </nav>

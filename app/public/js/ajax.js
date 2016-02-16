@@ -58,6 +58,13 @@ var ajax = function() {
     }).then(callback, logError);
   };
 
+  var getUsers = function(callback) {
+    $.ajax({
+        url: '/getUsers',
+        method: 'GET'
+      }).then(callback, logError);
+  };
+
   return {
     postComment: postComment,
     getComments: getComments,
@@ -65,6 +72,7 @@ var ajax = function() {
     getRights: getRights,
     getPromise: getPromise,
     updatePromise: updatePromise,
-    editPromise: editPromise
+    editPromise: editPromise,
+    getUsers: getUsers
   };
 }();

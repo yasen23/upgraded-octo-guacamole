@@ -19,6 +19,14 @@ module UserRepository
     wrap_user(user_attributes)
   end
 
+  def all
+    result = DB.execute2 "SELECT * FROM users;"
+    column_names = result.first
+    columns = result[1..-1]
+
+    users = columns.collect { |x| wrap_user(column_names.zip(x).to_h) }
+  end
+
   def find_by_username(username)
     columns, row = DB.execute2 "SELECT * FROM users WHERE username LIKE '#{username}';"
     return unless row

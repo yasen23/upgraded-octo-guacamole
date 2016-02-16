@@ -1,4 +1,7 @@
+require 'jsonable'
+
 class User
+  include Jsonable
   attr_accessor :id, :username, :email, :first_name, :last_name, :location
 
   def initialize(username, email, first_name, last_name, location, id = nil)
