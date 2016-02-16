@@ -223,7 +223,11 @@ textarea.input{
 }
 
 #promises-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: rgba(240,240,240,0.9);
+}
+
+#promises-table tr:nth-child(odd) {
+  background-color: rgba(256,256,256,0.9);
 }
 
 #promises-table th, td {
@@ -233,7 +237,23 @@ textarea.input{
 
 #promises-table th {
   color: white;
-  background-color: green;
+  background-color: rgba(178,149,107,0.9);
+}
+
+#promises-table tr th:first-child {
+  -webkit-border-top-left-radius: 6px;
+}
+
+#promises-table tr th:last-child {
+  -webkit-border-top-right-radius: 6px;
+}
+
+#promises-table tr:last-child td:first-child {
+  -webkit-border-bottom-left-radius: 6px;
+}
+
+#promises-table tr:last-child td:last-child {
+  -webkit-border-bottom-right-radius: 6px;
 }
 
 #promises-table th:nth-child(1) { width: 5%; }
@@ -248,7 +268,7 @@ textarea.input{
   -moz-transition:.5s;
   -webkit-transition:.5s;
   transition:.5s;
-  opacity: 0.75;
+  opacity: 0.7;
   cursor: pointer;
 }
 
