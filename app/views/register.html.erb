@@ -5,19 +5,19 @@
     <title>Register | Guac</title>
   </head>
   <body>
-    <div class="content">
+    <div class="register-form">
       <form method="post" action="/register">
-        <label for="name">Username:</label>
-        <input id="name" class="input" type="text" name="username"><br/>
-        <label for="mail">Email:</label>
-        <input id="mail" class="input" type="email" name="email"><br/>
-        <label for="fn">First name:</label>
-        <input id="fn" class="input" type="text" name="first_name"><br/>
-        <label for="ln">Last name:</label>
-        <input id="ln" class="input" type="text" name="last_name"><br/>
+        <input id="name" class="input" type="text"
+            placeholder="Username" name="username"><br/>
+        <input id="mail" class="input" type="email"
+            placeholder="Email" name="email"><br/>
+        <input id="fn" class="input" type="text"
+            placeholder="First name" name="first_name"><br/>
+        <input id="ln" class="input" type="text"
+            placeholder="Last name" name="last_name"><br/>
         <input type="submit" value="Register" class="input"/>
       </form>
-      <div>
+      <div id="offer-login">
         Already have an account? <a href="/login">Login!</a>
       </div>
     </div>

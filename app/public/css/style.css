@@ -50,7 +50,19 @@ div.content {
   z-index: 2;
 }
 
-.login-form input[type=text] {
+.register-form {
+  position: absolute;
+  top: calc(30%);
+  left: calc(40%);
+  height: 150px;
+  width: 260px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.login-form input[type=text],
+.register-form input[type=text],
+.register-form input[type=email] {
   width: 250px;
   height: 30px;
   background: transparent;
@@ -61,9 +73,11 @@ div.content {
   font-size: 16px;
   font-weight: 400;
   padding: 4px;
+  margin-bottom: 6px;
 }
 
-.login-form input[type=submit] {
+.login-form input[type=submit],
+.register-form input[type=submit] {
   width: 260px;
   height: 35px;
   background: #fff;
@@ -80,15 +94,18 @@ div.content {
 }
 
 /* Overrides default placeholder color. */
-.login-form ::-webkit-input-placeholder {
+.login-form ::-webkit-input-placeholder,
+.register-form ::-webkit-input-placeholder {
   color: #b2ddee
 }
 
-.login-form input[type=submit]:hover{
+.login-form input[type=submit]:hover,
+.register-form input[type=submit]:hover {
   opacity: 0.74;
 }
 
-.login-form input[type=submit]:active{
+.login-form input[type=submit]:active,
+.register-form input[type=submit]:hover {
   opacity: 0.5;
 }
 
@@ -96,11 +113,15 @@ div.content {
   padding-bottom: 15px;
 }
 
-#offer-registration {
+#offer-registration, #offer-login {
   text-align: right;
   font-family: 'Exo', sans-serif;
   font-size: 16px;
   font-weight: 400;
+}
+
+#offer-login {
+  margin-top: 15px;
 }
 
 textarea.input{
