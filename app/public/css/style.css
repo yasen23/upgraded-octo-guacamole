@@ -12,17 +12,47 @@ nav.main-nav {
 nav.main-nav a {
   text-decoration: none;
   color: white;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 nav.main-nav div {
   display: block;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
   float: left;
 }
 
 nav.main-nav div.hover:hover {
-  background: green;
+  /* Fancy fade-in hover */
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+
+  background: rgba(178,149,107,0.7);
+  cursor: pointer;
+}
+
+nav.main-nav #user-input-holder {
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+nav input[type=text] {
+  width: 250px;
+  height: 20px;
+  background: transparent;
+  border: 1px solid rgba(256,256,256,0.6);
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
 }
 
 div.content {
