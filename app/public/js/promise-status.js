@@ -1,9 +1,9 @@
-$(document).ready(function() {
+var promiseStatus = function() {
   var iconNames = {
     0: 'not_started.png',
-    1: 'started.png',
+    1: 'in_progress.png',
     2: 'broken.png',
-    3: 'finished.png'
+    3: 'completed.png'
   };
 
   var statusMessages = {
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
   var renderPromises = function(template) {
     $(".promise-status").each(function(i, obj) {
-      var status = parseInt($(obj).text().trim());
+      var status = $(obj).data('status');
       var rendered = Mustache.render(template, {
         status: statusMessages[status],
         statusClass: statusClasses[status],
@@ -33,5 +33,15 @@ $(document).ready(function() {
     });
   };
 
-  ajax.getTemplate('promise-status.mst', renderPromises);
+  var fetchTemplateAndRender = function() {
+    ajax.getTemplate('promise-status.mst', renderPromises);
+  };
+
+  return {
+    renderPromises: fetchTemplateAndRender
+  };
+}();
+
+$(document).ready(function() {
+  promiseStatus.renderPromises();
 });

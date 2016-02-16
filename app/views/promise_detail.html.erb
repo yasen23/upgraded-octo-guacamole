@@ -19,8 +19,7 @@
         <% end %>
       </h1>
       By <a href="show?id=<%= @user.id %>"><%= @user.full_name %></a>
-      <div class="promise-status">
-        <%= @promise.status %>
+      <div class="promise-status" data-status="<%= @promise.status %>">
       </div>
       <div class="textarea">
         <%= @promise.body %>

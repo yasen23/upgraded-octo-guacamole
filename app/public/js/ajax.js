@@ -28,6 +28,13 @@ var ajax = function() {
       }).then(callback, logError);
   };
 
+  var getPromise = function(promiseId, callback) {
+    $.ajax({
+      url: '/getPromise?promiseId=' + promiseId,
+      method: 'GET'
+    }).then(callback, logError);
+  };
+
   var getRights = function(promiseId, callback) {
     $.ajax({
         url: '/promiseRights?promiseId=' + promiseId,
@@ -35,10 +42,20 @@ var ajax = function() {
       }).then(callback, logError);
   };
 
+  var updatePromise = function(data, callback) {
+    $.ajax({
+      url: '/updatePromise',
+      method: 'POST',
+      data: JSON.stringify(data)
+    }).then(callback, logError);
+  };
+
   return {
     postComment: postComment,
     getComments: getComments,
     getTemplate: getTemplate,
-    getRights: getRights
+    getRights: getRights,
+    getPromise: getPromise,
+    updatePromise: updatePromise
   };
 }();

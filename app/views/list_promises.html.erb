@@ -23,22 +23,22 @@
           <th>Actions</th>
         </thead>
         <% for @promise in @promises %>
-          <tr>
+          <tr id='promise-row-<%= @promise.id %>'>
             <td>
-              <div class="promise-status">
-                <span class='status-sort-item'><%= @promise.status %></span>
+              <div class="promise-status p-status" data-status="<%= @promise.status %>">
+                <span class='status-sort-item'></span>
               </div>
             </td>
             <td>
               <a href="/showPromise?promiseId=<%= @promise.id %>">
-                <span class='title-sort-item'><%= @promise.title %></span>
+                <span class='title-sort-item p-title'><%= @promise.title %></span>
               </a>
             </td>
             <td>
-              <span class='body-sort-item'><%= @promise.body %></span>
+              <span class='body-sort-item p-body'><%= @promise.body %></span>
             </td>
             <td>
-              <a href="<%= @promise.completed_reference %>">
+              <a class="p-ref" href="<%= @promise.completed_reference %>">
                 <span class='reference-sort-item'>Article</span>
               </a>
             </td>

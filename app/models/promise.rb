@@ -1,4 +1,7 @@
+require 'jsonable'
+
 class Promise
+  include Jsonable
   attr_accessor :id, :status, :title, :body, :completed_reference, :user_id, :privacy
 
   NOT_STARTED = 0

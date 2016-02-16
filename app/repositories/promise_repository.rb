@@ -39,13 +39,13 @@ module PromiseRepository
 
   def update(promise)
     DB.execute <<-SQL
-      UPDATE promise
+      UPDATE promises
       SET
         status = '#{promise.status}',
         title = '#{promise.title}',
         body = '#{promise.body}',
-        privacy = '#{promise.privacy}'
-        completed_reference = '#{promise.completed_reference}',
+        privacy = '#{promise.privacy}',
+        completed_reference = '#{promise.completed_reference}'
       WHERE id = #{promise.id};
     SQL
   end

@@ -44,7 +44,8 @@ ROUTES = {
               '/listPromises' => 'promise#list',
               '/showPromise' => 'promise#single',
               '/comments' => 'comment#comments',
-              '/promiseRights' => 'promise#promise_rights'
+              '/promiseRights' => 'promise#promise_rights',
+              '/getPromise' => 'promise#single_json'
           },
           post: {
             '/register' => 'user#register',

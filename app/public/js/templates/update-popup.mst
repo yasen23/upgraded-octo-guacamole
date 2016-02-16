@@ -1,0 +1,16 @@
+<div class="popup">
+  <h2>{{title}}</h2>
+  <label for="status">Status:</label>
+  <select class="input" id="status">
+    <option id="o-0" value="0">Not started</option>
+    <option id="o-1" value="1">Started</option>
+    <option id="o-2" value="2">Broken</option>
+    <option id="o-3" value="3">Completed</option>
+  </select>
+  <label for="completed-reference">Reference:</label>
+  <input id="completed-reference" value="{{completedReference}}" class="input" type="text"/>
+  <button id="update">Update</button>
+  <button id="cancel">Cancel</button>
+</div>
+<div class="black-overlay">
+</div>

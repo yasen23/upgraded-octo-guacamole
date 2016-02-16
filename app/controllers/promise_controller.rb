@@ -1,3 +1,5 @@
+require 'json'
+
 module Guac
   class PromiseController < BaseController
     def get_create(req)
@@ -43,7 +45,7 @@ module Guac
       return EditRights.new(false, false, promise.id)
     end
 
-    def poast_edit(req)
+    def post_edit(req)
       authorize(req)
       promise = PromiseRepository.find(req.params['promiseId'])
       rights = get_rights(promise)
@@ -55,24 +57,27 @@ module Guac
       promise.title = req.params['title']
       promise.body = req.params['body']
       promise.privacy = req.params['privacy']
-      promise.completed_reference = req.params['completed_reference']
+      promise.completed_reference = req.params['completedReference']
 
       PromiseRepository.update(promise)
-      return Rack::Response.new(status = "Updated.", code = 201)
+      updated = PromiseRepositur.find(promise.id)
+      return Rack::Response.new(body = updated.to_json, code = 201)
     end
 
     def post_update(req)
       authorize(req)
-      promise = PromiseRepository.find(req.params['promiseId'])
+      params = JSON.parse(req.body.read)
+      promise = PromiseRepository.find(params['promiseId'])
       rights = get_rights(promise)
       if not @authorized or !rights.update
         return Rack::Response.new(status = "Not authorized.", code = 401) unless @authorized
       end
 
-      promise.status = req.params['status']
-      promise.completed_reference = req.params['completed_reference']
+      promise.status = params['status']
+      promise.completed_reference = params['completedReference']
       PromiseRepository.update(promise)
-      return Rack::Response.new(status = "Updated.", code = 201)
+      updated = PromiseRepository.find(promise.id)
+      return Rack::Response.new(body = updated.to_json, code = 201)
     end
 
     def get_promise_rights(req)
@@ -106,6 +111,16 @@ module Guac
       promise_id = req.params['promiseId']
       @promise = PromiseRepository.find(promise_id)
       render :promise_detail
+    end
+
+    def get_single_json(req)
+      authorize(req)
+      if not @authorized
+        return Rack::Response.new(status = "Not authorized.", code = 401)
+      end
+
+      promise = PromiseRepository.find(req.params['promiseId'])
+      return Rack::Response.new(body = promise.to_json, status = 200)
     end
   end
 end
