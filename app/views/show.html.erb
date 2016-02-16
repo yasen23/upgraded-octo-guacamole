@@ -17,6 +17,7 @@
         <p><%= @user.full_name %></p>
         <p>@<%= @user.username %></p>
         <p>location: <%= @user.location %></p>
+        <a href="/listPromises?id=<%= @user.id %>">Promises</a>
 
         <div class="user-stats">
           Stats:
