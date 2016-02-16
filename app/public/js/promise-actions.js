@@ -56,7 +56,7 @@ $(document).ready(function() {
 	};
 
   var updatePromise = function(event) {
-    var id = $(event.target.parentNode).data('id');
+    var id = $(event.target.parentNode.parentNode).data('id');
     ajax.getPromise(id, function(promise) {
       renderUpdatePopup(JSON.parse(promise));
     });
