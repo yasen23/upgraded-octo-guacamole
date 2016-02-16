@@ -3,15 +3,14 @@
   <link href="css/style.css" rel="stylesheet">
   <title>Login | Guac</title>
 </head>
-  <body>
-    <div class="content">
-      <h1>Login</h1>
-      <form method="post" action="/login">
-        <label for="username">Username:</label> 
-        <input class="input" type="text" name="username">
+  <body background="images/blurry.jpg">
+    <div class="login-form">
+      <form id="form-login" method="post" action="/login">
+        <input class="input" type="text" 
+            name="username" placeholder="Username">
         <input class="input" type="submit" value="Login"/>
       </form>
-      <div>
+      <div id="offer-registration">
         Don't have an account? <a href="/register">Register!</a>
       </div>
     </div>

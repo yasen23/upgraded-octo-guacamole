@@ -1,3 +1,7 @@
+body {
+  background-image: url("../images/blurry.jpg");
+}
+
 nav.main-nav {
   margin: 0;
   padding: 0;
@@ -25,11 +29,78 @@ div.content {
   height: auto;
   width: auto;
 }
-
+/*
 .input {
   margin-top: 10px;
   margin-bottom: 10px;
   display:block; 
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}*/
+
+.login-form {
+  position: absolute;
+  top: calc(40%);
+  left: calc(60%);
+  height: 150px;
+  width: 260px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.login-form input[type=text] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(0,0,256,0.2);
+  border-radius: 2px;
+  color: #000;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+}
+
+.login-form input[type=submit] {
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+  opacity: 0.96;
+}
+
+/* Overrides default placeholder color. */
+.login-form ::-webkit-input-placeholder {
+  color: #b2ddee
+}
+
+.login-form input[type=submit]:hover{
+  opacity: 0.74;
+}
+
+.login-form input[type=submit]:active{
+  opacity: 0.5;
+}
+
+#form-login {
+  padding-bottom: 15px;
+}
+
+#offer-registration {
+  text-align: right;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 textarea.input{
