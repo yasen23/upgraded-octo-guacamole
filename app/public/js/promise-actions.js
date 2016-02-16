@@ -3,7 +3,6 @@ $(document).ready(function() {
   var EDIT = '<a href="#" class="edit action"><img id="edit-icon" src="images/edit-icon-new.png" /></a>';
 
   var updateRow = function(promise) {
-    console.log(promise);
     var promiseRow = '#promise-row-' + promise['@id'];
     $(promiseRow + ' .p-status').data('status', promise['@status']);
     $(promiseRow + ' .p-title').text(promise['@title']);
@@ -51,8 +50,42 @@ $(document).ready(function() {
 		});
   };
 
+  var renderEditPopup = function(promise) {
+    ajax.getTemplate('edit-popup.mst', function(template) {
+      var rendered = Mustache.render(template, {
+        title: promise['@title'],
+        body: promise['@body']
+      });
+
+      $('body').append(rendered);
+
+      var selectedId = 'o-' + promise['@privacy'];
+      $('#pr option').filter(function() {
+        return this.id === selectedId;
+      }).prop('selected', true);
+
+      $('#update').on('click', function() {
+        var title = $('#title').val();
+        var body = $('#body').val();
+        var privacy = $('#pr').val();
+
+        ajax.editPromise({
+          title: title,
+          body: body,
+          privacy: privacy,
+          promiseId: promise['@id']
+        }, completeUpdate);
+      });
+
+      $('#cancel').on('click', closePopup);
+    });
+  };
+
   var editPromise = function(event) {
-    var id = $(event.target.parentNode).data('id');
+    var id = $(event.target.parentNode.parentNode).data('id');
+    ajax.getPromise(id, function(promise) {
+      renderEditPopup(JSON.parse(promise));
+    });
 	};
 
   var updatePromise = function(event) {
@@ -84,7 +117,6 @@ $(document).ready(function() {
 
   $('.actions').each(function(i, obj) {
     var promiseId = $(obj).data('id');
-		console.log(promiseId);
     ajax.getRights(promiseId, addActions);
   });
 });

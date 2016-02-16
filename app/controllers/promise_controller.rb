@@ -48,20 +48,22 @@ module Guac
 
     def post_edit(req)
       authorize(req)
-      promise = PromiseRepository.find(req.params['promiseId'])
+      params = JSON.parse(req.body.read)
+      promise = PromiseRepository.find(params['promiseId'])
       rights = get_rights(promise)
       if not @authorized or !rights.edit
         return Rack::Response.new(status = "Not authorized.", code = 401) unless @authorized
       end
 
-      promise.status = req.params['status']
-      promise.title = req.params['title']
-      promise.body = req.params['body']
-      promise.privacy = req.params['privacy']
-      promise.completed_reference = req.params['completedReference']
+      promise.title = params['title']
+      promise.body = params['body']
+      promise.privacy = params['privacy']
+      print promise.title
+      print promise.body
+      print promise.privacy
 
       PromiseRepository.update(promise)
-      updated = PromiseRepositur.find(promise.id)
+      updated = PromiseRepository.find(promise.id)
       return Rack::Response.new(body = updated.to_json, code = 201)
     end
 

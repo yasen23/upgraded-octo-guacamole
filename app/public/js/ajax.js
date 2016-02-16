@@ -50,12 +50,21 @@ var ajax = function() {
     }).then(callback, logError);
   };
 
+  var editPromise = function(data, callback) {
+    $.ajax({
+      url: '/editPromise',
+      method: 'POST',
+      data: JSON.stringify(data)
+    }).then(callback, logError);
+  };
+
   return {
     postComment: postComment,
     getComments: getComments,
     getTemplate: getTemplate,
     getRights: getRights,
     getPromise: getPromise,
-    updatePromise: updatePromise
+    updatePromise: updatePromise,
+    editPromise: editPromise
   };
 }();
