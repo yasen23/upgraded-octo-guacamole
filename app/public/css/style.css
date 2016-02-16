@@ -59,16 +59,11 @@ div.content {
   height: auto;
   width: auto;
 }
-/*
-.input {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display:block; 
 
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}*/
+.main-font {
+  font-family: 'Exo', sans-serif;
+  font-weight: 500;
+}
 
 .login-form {
   position: absolute;
@@ -90,9 +85,25 @@ div.content {
   z-index: 2;
 }
 
+#create-promise-form {
+  position: absolute;
+  top: calc(25%);
+  left: calc(50% - 200px);
+  height: 450px;
+  width: 400px;
+  text-align: center;
+
+  background: rgba(256,256,256,0.5);
+  border: 1px solid rgba(0,0,256,0.2);
+  border-radius: 2px;
+  padding: 10px;
+  z-index: 2;
+}
+
 .login-form input[type=text],
 .register-form input[type=text],
-.register-form input[type=email] {
+.register-form input[type=email],
+.transparent-input {
   width: 250px;
   height: 30px;
   background: transparent;
@@ -107,7 +118,8 @@ div.content {
 }
 
 .login-form input[type=submit],
-.register-form input[type=submit] {
+.register-form input[type=submit],
+.transparent-submit {
   width: 260px;
   height: 35px;
   background: #fff;
@@ -119,8 +131,37 @@ div.content {
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
-  margin-top: 10px;
+  margin-top: 6px;
   opacity: 0.96;
+}
+
+.transparent-select {
+  width: 260px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(0,0,256,0.2);
+  border-radius: 2px;
+  color: #000;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px;
+  margin-bottom: 6px;
+}
+
+#create-promise-form .transparent-select,
+#create-promise-form .transparent-submit {
+  width: 320px;
+}
+
+#create-promise-form .transparent-input {
+  width: 310px;
+}
+
+#promise-body {
+  height: auto;
+  resize: vertical;
+  max-height: 200px;
 }
 
 /* Overrides default placeholder color. */
@@ -154,7 +195,7 @@ div.content {
   margin-top: 15px;
 }
 
-textarea.input{
+textarea.input {
   width: 300px;
   height: 100px;
 }

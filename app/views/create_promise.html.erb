@@ -10,19 +10,33 @@
   <body>
     <%= partial 'navigation' %>
     <div class="content">
-      <h1>Create promise</h1>
-      <form method="post" action="/createPromise">
-        <label for="title">Title: </label>
-        <input class="input" type="text" name="title" id="title" placeholder="Promise title" />
-        <label for="pr">Privacy:</label>
-        <select class="input" id="pr" name="privacy">
-          <option value="0">Public (anyone can update status)</option>
-          <option value="1">Private (only you can update status)</option>
-        </select>
-        <label for="body">Body: </label>
-        <textarea class="input" name="body" id="body" placeholder="Promise"></textarea>
-        <input type="submit"/>
-      </form>
+      <div id="create-promise-form">
+        <h1 class="main-font">Create promise</h1>
+        <form method="post" action="/createPromise">
+          <input class="transparent-input" type="text" name="title"
+              placeholder="Promise title" />
+          <br />
+
+          <select class="transparent-select" id="pr" name="privacy">
+            <option selected disabled>
+              Choose privacy
+            </option>
+            <option value="0">
+              Public (anyone can update status)
+            </option>
+            <option value="1">
+              Private (only you can update status)
+            </option>
+          </select>
+          <br />
+
+          <textarea class="transparent-input" rows="8"
+              name="body" id="promise-body" placeholder="Promise"></textarea>
+          <br />
+
+          <input class="transparent-submit" type="submit"/>
+        </form>
+      </div>
     </div>
   </body>
 </html>
