@@ -227,32 +227,93 @@ a.action {
 }
 
 .black-overlay {
-   position: absolute;
-   top: 0%;
-   left: 0%;
-   width: 100%;
-   height: 100%;
-   background-color: black;
-   z-index:1001;
-   -moz-opacity: 0.8;
-   opacity:.80;
-   filter: alpha(opacity=80);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
 }
 
 .popup {
-   position: absolute;
-   top: 25%;
-   left: 25%;
-   width: 50%;
-   height: 50%;
-   padding: 16px;
-   background-color: white;
-   z-index:1002;
-   overflow: auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  padding: 16px;
+  background-color: white;
+  z-index:1002;
+  overflow: auto;
 }
 
-.user-stats img {
+.profile {
+  position: absolute;
+  background-color: rgba(256,256,256,0.4);
+
+  border-radius: 6px;
+  border: solid black 1px;
+  -moz-border-radius: 6px;
+
+  top: calc(10%);
+  left: calc(10%);
+  width: 80%;
+  min-width: 450px;
+  min-height: 600px;
+  padding: 10px;
+  z-index: 2;
+  display: table;
+}
+
+.profile .left-container {
+  width: 30%;
+  float: left;
+  display: inline-block;
+}
+
+.profile .right-container {
+  width: 70%;
+  float: right;
+  display: inline-block;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile #profile-photo {
+  max-height: 220px;
+  max-width: 220px;
+  border: solid white 2px;
+  margin-top: 20px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.profile #user-stats,
+.profile #user-stats #user-stats-table {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.profile #user-stats-table {
+  margin-top: 25px;
+}
+
+.profile #user-stats-table img {
   margin: 0 auto;
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
+}
+
+.profile #user-stats-values td {
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }

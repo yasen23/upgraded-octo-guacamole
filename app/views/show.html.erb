@@ -11,22 +11,37 @@
   <body>
     <%= partial :navigation %>
     <div class="content">
-      <h1>Profile</h1>
-      <section>
-        <img src="http://www.projectiv.co/wp-content/uploads/2013/12/placeholder.png" alt="Profile picture" id="profile-pic"/>
-        <p><%= @user.full_name %></p>
-        <p>@<%= @user.username %></p>
-        <p>location: <%= @user.location %></p>
-        <a href="/listPromises?id=<%= @user.id %>">Promises</a>
+      <div class="profile">
 
-        <div class="user-stats">
-          Stats:
-          <img src="images/completed.png" /> <%= @stats[3] || 0 %> <br />
-          <img src="images/broken.png" /> <%= @stats[2] || 0%> <br />
-          <img src="images/in_progress.png" /> <%= @stats[1] || 0 %> <br />
-          <img src="images/not_started.png" /> <%= @stats[0] || 0%> <br />
+        <div class="left-container">
+          <img id="profile-photo" src="http://www.projectiv.co/wp-content/uploads/2013/12/placeholder.png" alt="Profile picture" id="profile-pic"/>
+          <div id="user-stats">
+            <table id="user-stats-table">
+              <tr>
+                <td> <img src="images/completed.png" /> </td>
+                <td> <img src="images/broken.png" /> </td>
+                <td> <img src="images/in_progress.png" /> </td>
+                <td> <img src="images/not_started.png" /> </td>
+              </tr>
+              <tr id="user-stats-values">
+                <td> <%= @stats[3] || 0 %></td>
+                <td> <%= @stats[2] || 0 %></td>
+                <td> <%= @stats[1] || 0 %></td>
+                <td> <%= @stats[0] || 0 %></td>
+              </tr>
+            </table>
+          </div>
         </div>
-      </section>
+
+        <div class="right-container">
+          <div id="user-data">
+            <p><%= @user.full_name %></p>
+            <p>@<%= @user.username %></p>
+            <p>location: <%= @user.location %></p>
+            <a href="/listPromises?id=<%= @user.id %>">Promises</a>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
