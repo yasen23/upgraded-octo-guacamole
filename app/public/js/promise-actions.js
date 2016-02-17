@@ -128,7 +128,7 @@ $(document).ready(function() {
     }
 
     if (rights['@update'] == true) {
-      html += UPDATE;
+      html += UPDATE + ' &nbsp;';
     }
 
     if (rights['@confirm'] == true) {

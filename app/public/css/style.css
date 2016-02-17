@@ -320,10 +320,6 @@ textarea.input {
   cursor: pointer;
 }
 
-a.action {
-  display: block;
-}
-
 .black-overlay {
   position: absolute;
   top: 0%;
@@ -354,7 +350,7 @@ a.action {
   background-color: rgba(256,256,256,0.4);
 
   border-radius: 6px;
-  border: solid black 1px;
+  border: 1px solid rgba(0,0,256,0.2);
   -moz-border-radius: 6px;
 
   top: calc(10%);
