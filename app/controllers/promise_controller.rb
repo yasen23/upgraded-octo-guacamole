@@ -35,6 +35,10 @@ module Guac
         return EditRights.new(false, false, false, promise.id)
       end
 
+      if promise.confirmed == Promise::CONFIRMED
+        return EditRights.new(false, false, false, promise.id)
+      end
+
       confirm = @current_user.role == User::ROLE_ADMIN
 
       if promise.user_id == @current_user.id

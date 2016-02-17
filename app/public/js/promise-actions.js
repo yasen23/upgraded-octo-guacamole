@@ -6,6 +6,7 @@ $(document).ready(function() {
   var updateRow = function(promise) {
     var promiseRow = '#promise-row-' + promise['@id'];
     $(promiseRow + ' .p-status').data('status', promise['@status']);
+    $(promiseRow + ' .p-status').data('confirmed', promise['@confirmed']);
     $(promiseRow + ' .p-title').text(promise['@title']);
     $(promiseRow + ' .p-body').text(promise['@body']);
     $(promiseRow + ' .p-ref').attr('href', promise['@completed_reference']);
@@ -90,9 +91,7 @@ $(document).ready(function() {
 
       $('body').append(rendered);
       $('#confirm').on('click', function() {
-        ajax.confirmPromise(promise['@id'], function() {
-          closePopup();
-        });
+        ajax.confirmPromise(promise['@id'], completeUpdate);
       });
 
       $('#cancel').on('click', closePopup);

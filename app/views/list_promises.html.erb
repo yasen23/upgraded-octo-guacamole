@@ -26,7 +26,8 @@
         <% for @promise in @promises %>
           <tr id='promise-row-<%= @promise.id %>'>
             <td>
-              <div class="promise-status p-status" data-status="<%= @promise.status %>">
+              <div class="promise-status p-status" data-status="<%= @promise.status %>"
+                data-confirmed="<%= @promise.confirmed %>">
                 <span class='status-sort-item'></span>
               </div>
             </td>

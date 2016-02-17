@@ -253,6 +253,14 @@ textarea.input {
   color: green;
 }
 
+.promise-status div.confirmed {
+  color: green;
+}
+
+.promise-status div.not-confirmed {
+  color: yellow;
+}
+
 #promises-table {
   width: 100%;
   margin-top: 10px;
