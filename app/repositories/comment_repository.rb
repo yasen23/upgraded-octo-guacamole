@@ -18,10 +18,12 @@ module CommentRepository
       JOIN (
         SELECT id, username
         FROM users) k
-      ON k.id == user_id;
-      WHERE promise_id = '#{promise_id}'
+      ON k.id == user_id
+      WHERE promise_id = '#{promise_id}';
     SQL
 
+    print 'Promise ID'
+    print promise_id
     column_names = ['id', 'timestamp', 'username', 'text', 'user_id', 'promise_id', 'score']
     columns.collect { |x| wrap_comment(column_names.zip(x).to_h) }
   end
