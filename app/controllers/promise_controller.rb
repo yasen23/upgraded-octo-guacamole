@@ -14,7 +14,6 @@ module Guac
       return redirect('/login') unless @authorized
 
       privacy = Integer(req.params['privacy'])
-      print privacy != Promise::PUBLIC and privacy != Promise::PRIVATE
       if privacy != Promise::PUBLIC and privacy != Promise::PRIVATE
         return Rack::Response.new(status = "Invalid privacy setting.", code = 400)
       end
@@ -32,18 +31,20 @@ module Guac
 
     def get_rights(promise)
       if !@authorized
-        return EditRights.new(false, false, promise.id)
+        return EditRights.new(false, false, false, promise.id)
       end
 
+      confirm = @current_user.role == User::ROLE_ADMIN
+
       if promise.user_id == @current_user.id
-        return EditRights.new(true, true, promise.id)
+        return EditRights.new(true, true, confirm, promise.id)
       end
 
       if promise.privacy == Promise::PUBLIC
-        return EditRights.new(false, true, promise.id)
+        return EditRights.new(false, true, confirm, promise.id)
       end
 
-      return EditRights.new(false, false, promise.id)
+      return EditRights.new(false, false, confirm, promise.id)
     end
 
     def post_edit(req)
@@ -58,9 +59,6 @@ module Guac
       promise.title = params['title']
       promise.body = params['body']
       promise.privacy = params['privacy']
-      print promise.title
-      print promise.body
-      print promise.privacy
 
       PromiseRepository.update(promise)
       updated = PromiseRepository.find(promise.id)

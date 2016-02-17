@@ -4,9 +4,9 @@ module UserRepository
   def create(user)
     DB.execute <<-SQL
       INSERT INTO users (
-        `username`, `email`, `first_name`, `last_name`, `location`
+        `username`, `email`, `first_name`, `last_name`, `location`, `role`
       ) VALUES (
-        '#{user.username}', '#{user.email}', '#{user.first_name}', '#{user.last_name}', '#{user.location}'
+        '#{user.username}', '#{user.email}', '#{user.first_name}', '#{user.last_name}', '#{user.location}', '#{user.role}'
       );
     SQL
   end
@@ -43,7 +43,8 @@ module UserRepository
         email = '#{user.email}',
         first_name = '#{user.first_name}',
         last_name = '#{user.last_name}',
-        location = '#{user.location}'
+        location = '#{user.location}',
+        role = '#{user.role}'
       WHERE id = #{user.id};
     SQL
   end
@@ -59,6 +60,7 @@ module UserRepository
         user_attributes['first_name'],
         user_attributes['last_name'],
         user_attributes['location'],
+        user_attributes['role'],
         user_attributes['id'],
       )
   end

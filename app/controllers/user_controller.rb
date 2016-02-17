@@ -31,7 +31,12 @@ module Guac
       authorize(req)
       return redirect '/' unless !@authorized
 
-      user = User.new(req.params['username'], req.params['email'], req.params['first_name'], req.params['last_name'], nil)
+      role = User::ROLE_REGULAR
+      if req.params['role'] == 'on'
+        role = User::ROLE_ADMIN
+      end
+
+      user = User.new(req.params['username'], req.params['email'], req.params['first_name'], req.params['last_name'], req.params['location'], role)
       UserRepository.create(user)
       redirect '/'
     end
