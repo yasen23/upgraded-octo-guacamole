@@ -4,9 +4,9 @@ module PromiseRepository
   def create(promise)
     DB.execute <<-SQL
       INSERT INTO promises (
-        `status`, `title`, `body`, `user_id`, `privacy`
+        `status`, `title`, `body`, `user_id`, `privacy`, `confirmed`
       ) VALUES (
-        '#{promise.status}', '#{promise.title}', '#{promise.body}', '#{promise.user_id}', '#{promise.privacy}'
+        '#{promise.status}', '#{promise.title}', '#{promise.body}', '#{promise.user_id}', '#{promise.privacy}', '#{promise.confirmed}'
       );
     SQL
   end
@@ -45,7 +45,8 @@ module PromiseRepository
         title = '#{promise.title}',
         body = '#{promise.body}',
         privacy = '#{promise.privacy}',
-        completed_reference = '#{promise.completed_reference}'
+        completed_reference = '#{promise.completed_reference}',
+        confirmed = '#{promise.confirmed}'
       WHERE id = #{promise.id};
     SQL
   end
@@ -62,6 +63,7 @@ module PromiseRepository
         promise['completed_reference'],
         promise['user_id'],
         promise['privacy'],
+        promise['confirmed'],
         promise['id']
       )
   end

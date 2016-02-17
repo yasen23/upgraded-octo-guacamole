@@ -46,7 +46,8 @@ ROUTES = {
               '/comments' => 'comment#comments',
               '/promiseRights' => 'promise#promise_rights',
               '/getPromise' => 'promise#single_json',
-              '/getUsers' => 'user#all'
+              '/getUsers' => 'user#all',
+              '/confirmPromise' => 'promise#confirm'
           },
           post: {
             '/register' => 'user#register',

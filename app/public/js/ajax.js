@@ -65,6 +65,13 @@ var ajax = function() {
       }).then(callback, logError);
   };
 
+  var confirmPromise = function(id, callback) {
+    $.ajax({
+      url: '/confirmPromise?promiseId=' + id,
+      method: 'GET'
+    }).then(callback, logError);
+  };
+
   return {
     postComment: postComment,
     getComments: getComments,
@@ -73,6 +80,7 @@ var ajax = function() {
     getPromise: getPromise,
     updatePromise: updatePromise,
     editPromise: editPromise,
-    getUsers: getUsers
+    getUsers: getUsers,
+    confirmPromise: confirmPromise
   };
 }();

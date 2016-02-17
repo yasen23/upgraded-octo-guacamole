@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var UPDATE = '<a href="#" class="update action"><img id="update-icon" src="images/update-icon.png" /></a>';
   var EDIT = '<a href="#" class="edit action"><img id="edit-icon" src="images/edit-icon-new.png" /></a>';
+  var CONFIRM = '<a href="#" class="confirm action"><img id="confirm-icon" src="images/confirm-icon.png" /></a>';
 
   var updateRow = function(promise) {
     var promiseRow = '#promise-row-' + promise['@id'];
@@ -81,6 +82,23 @@ $(document).ready(function() {
     });
   };
 
+  var renderConfirmPopup = function(promise) {
+    ajax.getTemplate('confirm-popup.mst', function(template) {
+      var rendered = Mustache.render(template, {
+        title: promise['@title'],
+      });
+
+      $('body').append(rendered);
+      $('#confirm').on('click', function() {
+        ajax.confirmPromise(promise['@id'], function() {
+          closePopup();
+        });
+      });
+
+      $('#cancel').on('click', closePopup);
+    });
+  };
+
   var editPromise = function(event) {
     var id = $(event.target.parentNode.parentNode).data('id');
     ajax.getPromise(id, function(promise) {
@@ -95,6 +113,13 @@ $(document).ready(function() {
     });
   };
 
+  var confirmPromise = function(event) {
+    var id = $(event.target.parentNode.parentNode).data('id');
+     ajax.getPromise(id, function(promise) {
+      renderConfirmPopup(JSON.parse(promise));
+    });
+  };
+
   var addActions = function(data) {
     rights = JSON.parse(data);
     var html = '';
@@ -106,6 +131,10 @@ $(document).ready(function() {
       html += UPDATE;
     }
 
+    if (rights['@confirm'] == true) {
+      html += CONFIRM;
+    }
+
     if (html == '') {
       html = 'N/A';
     }
@@ -113,6 +142,7 @@ $(document).ready(function() {
     $('.promise-' + rights['@promise_id']).html(html);
     $('.promise-' + rights['@promise_id'] + ' .edit').on('click', editPromise);
     $('.promise-' + rights['@promise_id'] + ' .update').on('click', updatePromise);
+    $('.promise-' + rights['@promise_id'] + ' .confirm').on('click', confirmPromise);
   };
 
   $('.actions').each(function(i, obj) {

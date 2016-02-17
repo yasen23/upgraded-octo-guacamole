@@ -1,0 +1,6 @@
+<div class="popup">
+  <h2>Confirm {{title}}?</h2>
+  <button id="confirm">Yes</button>
+  <button id="cancel">No</button>
+</div>
+<div class="black-overlay"></div>

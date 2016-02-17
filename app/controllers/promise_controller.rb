@@ -23,7 +23,8 @@ module Guac
         req.params['body'],
         nil,
         @current_user.id,
-        privacy);
+        privacy,
+        Promise::NOT_CONFIRMED);
       PromiseRepository.create(promise)
 
       return redirect('/listPromises')
@@ -90,6 +91,27 @@ module Guac
       promise = PromiseRepository.find(req.params['promiseId'])
       rights = get_rights(promise)
       return Rack::Response.new(body = rights.to_json, status = 200)
+    end
+
+    def get_confirm(req)
+      authorize(req)
+      if not @authorized
+        return Rack::Response.new(body = "Not authorized.", status = 401)
+      end
+
+      promise = PromiseRepository.find(req.params['promiseId'])
+      rights = get_rights(promise)
+      if not rights.confirm
+        return Rack::Response.new(body = "Not authorized.", status = 401)
+      end
+
+      if promise == nil
+        return Rack::Response.new(body = "Promise not found.", status = 404)
+      end
+
+      promise.confirmed = Promise::CONFIRMED
+      PromiseRepository.update(promise)
+      return Rack::Response.new(body = promise.to_json, code = 201)
     end
 
 		def get_list(req)

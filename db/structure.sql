@@ -15,6 +15,7 @@ CREATE TABLE promises (
   privacy INTEGER NOT NULL,
   completed_reference TEXT,
   user_id INTEGER NOT NULL, 
+  confirmed INTEGER NOT NULL,
   FOREIGN KEY(user_id) REFERENCES users(id)
 );
 

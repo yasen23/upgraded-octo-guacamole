@@ -2,7 +2,7 @@ require 'jsonable'
 
 class Promise
   include Jsonable
-  attr_accessor :id, :status, :title, :body, :completed_reference, :user_id, :privacy
+  attr_accessor :id, :status, :title, :body, :completed_reference, :user_id, :privacy, :confirmed
 
   NOT_STARTED = 0
   STARTED = 1
@@ -12,7 +12,10 @@ class Promise
   PUBLIC = 0
   PRIVATE = 1
 
-  def initialize(status, title, body, completed_reference, user_id, privacy, id = nil)
+  NOT_CONFIRMED = 0
+  CONFIRMED = 1
+
+  def initialize(status, title, body, completed_reference, user_id, privacy, confirmed, id = nil)
     @status = status
     @title = title
     @body = body
@@ -20,5 +23,6 @@ class Promise
     @user_id = user_id
     @id = id
     @privacy = privacy
+    @confirmed = confirmed
   end
 end
