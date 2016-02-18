@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var promiseActions = function() {
   var UPDATE = '<a href="#" class="update action"><img id="update-icon" src="images/update-icon.png" /></a>';
   var EDIT = '<a href="#" class="edit action"><img id="edit-icon" src="images/edit-icon-new.png" /></a>';
   var CONFIRM = '<a href="#" class="confirm action"><img id="confirm-icon" src="images/confirm-icon.png" /></a>';
@@ -12,6 +12,7 @@ $(document).ready(function() {
     $(promiseRow + ' .p-ref').attr('href', promise['@completed_reference']);
 
     promiseStatus.renderPromises();
+    populateActions();
   };
 
   var closePopup = function() {
@@ -121,6 +122,7 @@ $(document).ready(function() {
 
   var addActions = function(data) {
     rights = JSON.parse(data);
+    console.log(data);
     var html = '';
     if (rights['@edit'] == true) {
       html += EDIT + ' &nbsp;';
@@ -131,7 +133,7 @@ $(document).ready(function() {
     }
 
     if (rights['@confirm'] == true) {
-      html += CONFIRM;
+      html += CONFIRM + ' &nbsp;';
     }
 
     if (html == '') {
@@ -144,8 +146,18 @@ $(document).ready(function() {
     $('.promise-' + rights['@promise_id'] + ' .confirm').on('click', confirmPromise);
   };
 
-  $('.actions').each(function(i, obj) {
-    var promiseId = $(obj).data('id');
-    ajax.getRights(promiseId, addActions);
-  });
+  var populateActions = function() {
+    $('.actions').each(function(i, obj) {
+      var promiseId = $(obj).data('id');
+      ajax.getRights(promiseId, addActions);
+    });
+  }
+
+  return {
+    populate: populateActions
+  }
+}();
+
+$(document).ready(function() {
+  promiseActions.populate();
 });
