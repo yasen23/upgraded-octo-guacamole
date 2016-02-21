@@ -337,6 +337,10 @@ textarea.input {
   cursor: pointer;
 }
 
+.clickable-td {
+  cursor: pointer;
+}
+
 .black-overlay {
   position: absolute;
   top: 0%;

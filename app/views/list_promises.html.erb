@@ -31,12 +31,12 @@
                 <span class='status-sort-item'></span>
               </div>
             </td>
-            <td>
-              <a href="/showPromise?promiseId=<%= @promise.id %>">
-                <span class='title-sort-item p-title'><%= @promise.title %></span>
-              </a>
+            <td class="clickable-td"
+                onclick="window.location.href='/showPromise?promiseId=<%= @promise.id %>'">
+              <span class='title-sort-item p-title'><%= @promise.title %></span>
             </td>
-            <td>
+            <td class="clickable-td"
+                onclick="window.location.href='/showPromise?promiseId=<%= @promise.id %>'">
               <span class='body-sort-item p-body'><%= @promise.body %></span>
             </td>
             <td>
