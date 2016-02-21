@@ -42,7 +42,7 @@ var promiseActions = function() {
         return this.id === selectedId;
       }).prop('selected', true);
 
-      $('#update').on('click', function() {
+      $('#update-btn').on('click', function() {
         var status = $('#status').val();
         var ref = $('#completed-reference').val();
         ajax.updatePromise({
@@ -70,9 +70,9 @@ var promiseActions = function() {
         return this.id === selectedId;
       }).prop('selected', true);
 
-      $('#update').on('click', function() {
+      $('#edit-btn').on('click', function() {
         var title = $('#title').val();
-        var body = $('#body').val();
+        var body = $('#promise-edit-body').val();
         var privacy = $('#pr').val();
 
         ajax.editPromise({

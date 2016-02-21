@@ -27,7 +27,7 @@
     </tr>
   </table>
 
-  <button id="update" class="transparent-submit button-left">Update</button>
+  <button id="update-btn" class="transparent-submit button-left">Update</button>
   <button id="cancel" class="transparent-submit button-right">Cancel</button>
 </div>
 <div class="black-overlay">

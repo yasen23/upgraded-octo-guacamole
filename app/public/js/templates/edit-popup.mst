@@ -27,13 +27,11 @@
       </td>
       <td>
         <textarea class="transparent-input" name="body" id="promise-edit-body"
-            rows="8" placeholder="Promise">
-          {{body}}
-        </textarea>
+            rows="8" placeholder="Promise">{{body}}</textarea>
       </td>
     </tr>
   </table>
-  <button id="update" class="transparent-submit button-left">Update</button>
+  <button id="edit-btn" class="transparent-submit button-left">Edit</button>
   <button id="cancel" class="transparent-submit button-right">Cancel</button>
 </div>
 <div class="black-overlay">
