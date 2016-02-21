@@ -1,14 +1,23 @@
-<div class="popup">
+<div id="edit-promise-popup" class="promise-form">
   <h2>{{title}}</h2>
   <label for="title">Title:</label>
-  <input class="input" type="text" id="title" value="{{title}}" placeholder="Promise title" />
+  <input class="input" type="text" id="title"
+      value="{{title}}" placeholder="Promise title" />
+  <br />
+
   <label for="pr">Privacy:</label>
   <select class="input" id="pr" name="privacy">
     <option id="o-0" value="0">Public (anyone can update status)</option>
     <option id="o-1" value="1">Private (only you can update status)</option>
   </select>
+  <br />
+
   <label for="body">Body: </label>
-  <textarea class="input" name="body" id="body" placeholder="Promise">{{body}}</textarea>
+  <textarea class="input" name="body" id="body"
+      placeholder="Promise">
+    {{body}}
+  </textarea>
+  <br />
 
   <button id="update">Update</button>
   <button id="cancel">Cancel</button>

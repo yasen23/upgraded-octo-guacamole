@@ -1,4 +1,4 @@
-<div class="popup">
+<div id="edit-promise-popup" class="promise-form">
   <h2>{{title}}</h2>
   <label for="status">Status:</label>
   <select class="input" id="status">
