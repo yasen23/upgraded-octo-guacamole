@@ -1,16 +1,34 @@
-<div id="edit-promise-popup" class="promise-form">
-  <h2>{{title}}</h2>
-  <label for="status">Status:</label>
-  <select class="input" id="status">
-    <option id="o-0" value="0">Not started</option>
-    <option id="o-1" value="1">Started</option>
-    <option id="o-2" value="2">Broken</option>
-    <option id="o-3" value="3">Completed</option>
-  </select>
-  <label for="completed-reference">Reference:</label>
-  <input id="completed-reference" value="{{completedReference}}" class="input" type="text"/>
-  <button id="update">Update</button>
-  <button id="cancel">Cancel</button>
+<div id="update-promise-popup" class="promise-form">
+  <h2 class="main-font">{{title}}</h2>
+  <table>
+    <tr>
+      <td>
+        <label for="status" class="main-font">Status</label>
+      </td>
+      <td>
+        <select class="transparent-select" id="status">
+          <option id="o-0" value="0">Not started</option>
+          <option id="o-1" value="1">Started</option>
+          <option id="o-2" value="2">Broken</option>
+          <option id="o-3" value="3">Completed</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="completed-reference" class="main-font">
+          Reference
+        </label>
+      </td>
+      <td>
+        <input id="completed-reference" value="{{completedReference}}"
+            class="transparent-input" type="text"/>
+      </td>
+    </tr>
+  </table>
+
+  <button id="update" class="transparent-submit button-left">Update</button>
+  <button id="cancel" class="transparent-submit button-right">Cancel</button>
 </div>
 <div class="black-overlay">
 </div>

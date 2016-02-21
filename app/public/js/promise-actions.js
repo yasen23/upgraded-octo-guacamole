@@ -19,6 +19,7 @@ var promiseActions = function() {
     // Close all open popups.
     $('.popup').remove();
     $('#edit-promise-popup').remove();
+    $('#update-promise-popup').remove();
     $('.black-overlay').remove();
   };
 
