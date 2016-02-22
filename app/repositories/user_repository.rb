@@ -2,17 +2,20 @@ module UserRepository
   extend self
 
   def create(user)
-    DB.execute <<-SQL
+    statement = <<-SQL
       INSERT INTO users (
         `username`, `email`, `first_name`, `last_name`, `location`, `role`
       ) VALUES (
-        '#{user.username}', '#{user.email}', '#{user.first_name}', '#{user.last_name}', '#{user.location}', '#{user.role}'
+        ?, ?, ?, ?, ?, ?
       );
     SQL
+    DB.execute statement,
+        user.username, user.email, user.first_name,
+        user.last_name, user.location, user.role
   end
 
   def find(id)
-    columns, row = DB.execute2 "SELECT * FROM users WHERE id = #{id};"
+    columns, row = DB.execute2 "SELECT * FROM users WHERE id = ?;", id
     return unless row
 
     user_attributes = columns.zip(row).to_h
@@ -28,7 +31,7 @@ module UserRepository
   end
 
   def find_by_username(username)
-    columns, row = DB.execute2 "SELECT * FROM users WHERE username LIKE '#{username}';"
+    columns, row = DB.execute2 "SELECT * FROM users WHERE username LIKE ?;", username
     return unless row
 
     user_attributes = columns.zip(row).to_h
@@ -36,21 +39,25 @@ module UserRepository
   end
 
   def update(user)
-    DB.execute <<-SQL
+    statement = <<-SQL
       UPDATE users
       SET
-        username = '#{user.username}',
-        email = '#{user.email}',
-        first_name = '#{user.first_name}',
-        last_name = '#{user.last_name}',
-        location = '#{user.location}',
-        role = '#{user.role}'
-      WHERE id = #{user.id};
+        username = ?,
+        email = ?,
+        first_name = ?,
+        last_name = ?,
+        location = ?,
+        role = ?
+      WHERE id = ?;
     SQL
+    DB.execute statement,
+        user.username, user.email, user.first_name,
+        user.last_name, user.location, user.role,
+        user.id
   end
 
   def delete(id)
-    DB.execute "DELETE FROM users WHERE id = #{id};"
+    DB.execute "DELETE FROM users WHERE id = ?;", id
   end
 
   def wrap_user(user_attributes)
