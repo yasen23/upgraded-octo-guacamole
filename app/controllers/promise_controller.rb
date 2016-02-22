@@ -13,7 +13,7 @@ module Guac
       authorize(req)
       return redirect('/login') unless @authorized
 
-      privacy = Integer(req.params['privacy'])
+      privacy = Integer(req.params['privacy'] || -1)
       if privacy != Promise::PUBLIC and privacy != Promise::PRIVATE
         return Rack::Response.new(status = "Invalid privacy setting.", code = 400)
       end
