@@ -13,29 +13,40 @@
   </head>
   <body>
     <%= partial "navigation" %>
-    <div class="content">
-      <h1><%= @promise.title %>  
-        <% if @promise.status != Promise::NOT_STARTED %>
-          | <a href="<%= @promise.completed_reference %>">Article</a>
-        <% end %>
-      </h1>
-      By <a href="show?id=<%= @user.id %>"><%= @user.full_name %></a>
-      <div class="promise-status" data-status="<%= @promise.status %>" 
+    <div class="comment-widget main-font">
+      <div class="promise-status" data-status="<%= @promise.status %>"
         data-confirmed="<%= @promise.confirmed %>">
       </div>
+      <div class="promise-title">
+        <h1><%= @promise.title %>
+          <% if @promise.status != Promise::NOT_STARTED %>
+            | <a href="<%= @promise.completed_reference %>">Article</a>
+          <% end %>
+        </h1>
+      </div>
+      <br /> by <a href="show?id=<%= @user.id %>"><%= @user.full_name %></a>
       <div class="textarea">
         <%= @promise.body %>
       </div>
       <div id="promise-id" hidden><%= @promise.id %></div>
-  
       <br/>
-      Comments:
+
+      <span id="comments-begin">Comments</span>
       <div id="comments-container">
       </div>
       <br/>
-      Add a comment:
-      <textarea class="input" id="comment-text"></textarea>
-      <button class="input" id="add-comment">Comment!</button>
+      <div id="add-comment-table">
+        <div>
+          <span>Add a comment</span>
+        </div>
+        <div>
+          <textarea id="comment-text" class="transparent-input"
+            rows="4" id="comment-text"></textarea>
+        </div>
+      </div>
+      <br />
+
+      <button class="transparent-submit" id="add-comment">Comment</button>
     </div>
   </body>
 </html>

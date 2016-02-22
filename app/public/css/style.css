@@ -103,6 +103,21 @@ div.content {
   z-index: 2;
 }
 
+.comment-widget {
+  position: absolute;
+  top: calc(10% + 50px);
+  left: calc(10%);
+  height: calc(80% - 50px);
+  width: 80%;
+  text-align: center;
+  overflow-y: auto;
+
+  background: rgba(256,256,256,0.8);
+  border: 1px solid rgba(0,0,256,0.2);
+  border-radius: 2px;
+  padding: 10px;
+}
+
 .login-form input[type=text],
 .register-form input[type=text],
 .register-form input[type=email],
@@ -167,7 +182,8 @@ div.content {
   max-height: 200px;
 }
 
-#promise-edit-body {
+#promise-edit-body,
+#comment-text {
   height: auto;
   resize: vertical;
   max-height: 180px;
@@ -211,22 +227,54 @@ textarea.input {
 
 #comments-container {
   margin-left: 10px;
+  margin-right: 10px;
+}
+
+.comment-widget .promise-status {
+  display: inline-block;
+  width: 15%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.comment-widget .promise-title {
+  display: inline-block;
+  width: 80%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#comments-begin {
+  font-size: 16px;
 }
 
 .comment {
+  display: table;
   width: 100%;
   margin-top: 2px;
 }
 
 .comment-body {
-  margin-left: 5px;
+  display: table-cell;
+  text-align: justify;
+  width: 60%;
+  padding: 6px 12px 6px 12px;
+  vertical-align: middle;
+  border-radius: 6px;
+  background: rgba(200,200,200,0.4);
 }
 
 .comment-head {
-  display: inline-block;
+  display: table-cell;
+  width: 30%;
   background: #dbdbdb;
-  margin-bottom: 3px;
-  border-radius: 7px;
+  vertical-align: middle;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,256,0.2);
+}
+
+#add-comment-table {
+  display: inline-table;
 }
 
 .promise-content {
@@ -368,7 +416,8 @@ textarea.input {
 }
 
 #edit-promise-popup label,
-#update-promise-popup label {
+#update-promise-popup label,
+.comment-widget span {
   color: rgba(128,128,128, 0.7);
   font-weight: 500;
   font-size: 14px;
