@@ -176,6 +176,11 @@ div.content {
   width: 310px;
 }
 
+#error-span {
+  color: red;
+  margin-top: 12px;
+}
+
 #promise-body {
   height: auto;
   resize: vertical;

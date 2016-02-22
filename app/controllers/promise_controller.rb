@@ -15,12 +15,18 @@ module Guac
 
       privacy = Integer(req.params['privacy'] || -1)
       if privacy != Promise::PUBLIC and privacy != Promise::PRIVATE
-        return Rack::Response.new(status = "Invalid privacy setting.", code = 400)
+        return redirect('createPromise?error=Invalid privacy setting.')
       end
 
+      title = req.params['title']
+      return redirect('createPromise?error=Title is empty.') if title.nil? || title.empty?
+
+      body = req.params['body']
+      return redirect('createPromise?error=Body is empty.') if body.nil? || body.empty?
+
       promise = Promise.new(Promise::NOT_STARTED,
-        req.params['title'],
-        req.params['body'],
+        title,
+        body,
         nil,
         @current_user.id,
         privacy,

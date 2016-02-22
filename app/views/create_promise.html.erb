@@ -5,6 +5,7 @@
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/find-user.js"></script>
+    <script type="text/javascript" src="js/create-promise.js"></script>
     <title><%= @current_user.full_name %> | Promises</title>
   </head>
   <body>
@@ -35,6 +36,9 @@
           <br />
 
           <input class="transparent-submit" type="submit"/>
+          <br />
+
+          <span id="error-span" class="main-font hidden"></span>
         </form>
       </div>
     </div>
